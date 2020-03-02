@@ -1,0 +1,34 @@
+﻿        <!-- DIV que contém o conteúdo mostrado no site -->
+        <div id="content">
+            <br>
+            <h3 style="text-align: center;">Formulário de Cadastro</h3>
+            <br>
+
+            <div id="form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Nome completo:
+                        <input type="text" class="form-control" id="name" name="name">
+                        <br />
+
+                        E-mail:
+                        <input type="text" class="form-control" id="email" name="email">
+                        <br />
+
+                        Data de Nascimento (formato DD/MM/AAAA):
+                        <input type="text" class="form-control" id="birth_date" name="birth_date" onkeypress="return isInteger(event.which, event.keyCode)">
+                        <br />
+
+                        Foto:
+                        <br />
+                        <input type="file" id="picture" name="picture" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <div id="rbuttons" class="row mt-2">
+                <div class="mx-auto d-block">
+                    <button id="register" class="btn btn-primary" onclick="submitRegisterForm()">Enviar</button>
+                </div>
+            </div>
+        </div>
