@@ -1,118 +1,81 @@
-﻿using System;
+﻿using CadastroApp.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using CadastroApp.Models;
 
 namespace CadastroApp.Controllers
 {
     public class UsersController : ApiController
     {
-        private UserContext db = new UserContext();
+        private static List<User> Users = new List<User>();
+        private long NextId = 0; //Salva o ID do próximo usuário a ser inserido na lista
 
-        // GET: api/Users
-        public IQueryable<User> GetUsers()
+        //Como não há métodos para remover usuários, o ID sempre corresponderá à posição na lista
+        [Route("api/users/getuser/{id}")]
+        public User GetUser(int id)
         {
-            return db.Users;
+            return Users[id];
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(long id)
+        [Route("api/users/getusers")]
+        public User[] GetUsers()
         {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
+            return Users.ToArray();
         }
 
-        // PUT: api/Users/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(long id, User user)
+        //Eu segui um tutorial do Stack Overflow para passar múltiplos parâmetros em uma requisição mas não funcionou e o tempo estava meio apertado para pesquisar melhor
+        [HttpPost]
+        [Route("api/users/adduser")]
+        public void AddUser(string name, string email, string birthDate, string pictureUrl)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            User newUser = new User(NextId, name, email, NextId, birthDate, pictureUrl);
+            Users.Add(newUser);
+            NextId++;
+        }
 
-            if (id != user.ID)
-            {
-                return BadRequest();
-            }
+        //Retorna uma lista de usuários que estão relacionados à palavra-chave
+        [HttpGet]
+        [Route("api/users/searchuser")]
+        public User[] SearchUserByNameOrEmail(string keyword)
+        {
+            List<User> result = new List<User>();
 
-            db.Entry(user).State = EntityState.Modified;
-
-            try
+            foreach (User user in Users)
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
+                if (user.Name.Contains(keyword) || user.Email.Contains(keyword))
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    result.Add(user);
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return result.ToArray();
         }
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        //Não é necessário preencher todos os parâmetros de moficiação, colocar null ou deixar a string vazia nos que não deseja editar
+        //Mas o id é obrigatório
+        public void EditUser(int id, string newName, string newEmail, string newBirthDate, string newPictureUrl)
         {
-            if (!ModelState.IsValid)
+            if (!string.IsNullOrWhiteSpace(newName))
             {
-                return BadRequest(ModelState);
+                Users[id].Name = newName;
             }
 
-            db.Users.Add(user);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = user.ID }, user);
-        }
-
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(long id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
+            if (!string.IsNullOrWhiteSpace(newEmail))
             {
-                return NotFound();
+                Users[id].Email = newEmail;
             }
 
-            db.Users.Remove(user);
-            db.SaveChanges();
-
-            return Ok(user);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (!string.IsNullOrWhiteSpace(newBirthDate))
             {
-                db.Dispose();
+                Users[id].BirthDate = new Date(id, newBirthDate);
             }
-            base.Dispose(disposing);
-        }
 
-        private bool UserExists(long id)
-        {
-            return db.Users.Count(e => e.ID == id) > 0;
+            if (!string.IsNullOrWhiteSpace(newPictureUrl))
+            {
+                Users[id].BirthDate = new Date(id, newPictureUrl);
+            }
         }
     }
 }

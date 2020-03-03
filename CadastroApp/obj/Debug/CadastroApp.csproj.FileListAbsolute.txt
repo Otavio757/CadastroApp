@@ -88,7 +88,6 @@ C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\pt-br\
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\pt-br\System.Web.WebPages.resources.dll
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\pt-br\System.Web.WebPages.Razor.resources.dll
-C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\obj\Debug\CadastroApp.csprojAssemblyReference.cache
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\obj\Debug\CadastroApp.csproj.CopyComplete
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\obj\Debug\CadastroApp.dll
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\obj\Debug\CadastroApp.pdb
@@ -96,3 +95,4 @@ C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\Entity
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\EntityFramework.SqlServer.dll
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\EntityFramework.xml
 C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\bin\EntityFramework.SqlServer.xml
+C:\Users\otavi\OneDrive\Teste API\CadastroApp\CadastroApp\CadastroApp\obj\Debug\CadastroApp.csprojAssemblyReference.cache

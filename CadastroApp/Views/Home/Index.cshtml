@@ -1,31 +1,29 @@
 ﻿        <!-- DIV que contém o conteúdo mostrado no site -->
-        <div id="content">
-            <br>
-            <h3 style="text-align: center;">Formulário de Cadastro</h3>
-            <br>
+    <div id="content">
+        <br />
+        Selecione uma opção para começar:
+        <br /><br />
+        <button type="button" class="btn btn-primary" onclick="showForm()">Cadastrar usuário</button>
+        <button type="button" class="btn btn-secondary" onclick="showSearchUser()">Pesquisar usuário</button>
+        <button type="button" class="btn btn-success" onclick="showListUsers()">Listar usuários</button>
+        <button type="button" class="btn btn-danger" onclick="showEditUser()">Editar usuário</button>
 
-            <div id="form">
-                <div class="row">
-                    <div class="col-sm-12">
-                        Nome completo:
-                        <input type="text" class="form-control" id="name" name="name">
-                        <br />
+        <div id="form" class="main">
+            Nome completo:
+            <input type="text" class="form-control" id="name" name="name">
+            <br />
 
-                        E-mail:
-                        <input type="text" class="form-control" id="email" name="email">
-                        <br />
+            E-mail:
+            <input type="text" class="form-control" id="email" name="email">
+            <br />
 
-                        Data de Nascimento (formato DD/MM/AAAA):
-                        <input type="text" class="form-control" id="birth_date" name="birth_date" onkeypress="return isInteger(event.which, event.keyCode)">
-                        <br />
+            Data de Nascimento (formato DD/MM/AAAA):
+            <input type="text" class="form-control" id="birth_date" name="birth_date" onkeypress="return isInteger(event.which, event.keyCode)">
+            <br />
 
-                        Foto:
-                        <br />
-                        <input type="file" id="picture" name="picture" accept="image/*">
-                        <br />
-                    </div>
-                </div>
-            </div>
+            Foto (clique <a href="https://imgur.com/upload" target="_blank">aqui</a> para fazer o upload da imagem e copie a URL para a caixa abaixo):
+            <input type="text" class="form-control" id="picture" name="email">
+            <br />
 
             <div id="rbuttons" class="row mt-2">
                 <div class="mx-auto d-block">
@@ -33,3 +31,49 @@
                 </div>
             </div>
         </div>
+
+        <div id="search_user" class="main">
+            Digite o nome ou e-mail do usuário desejado:
+            <input type="text" class="form-control" id="search_user" name="search_user" style="display: inline">
+            <button id="register" class="btn btn-primary" onclick="searchUser()">Pesquisar</button>
+        </div>
+
+        <div id="list_users" class="main">
+
+        </div>
+
+        <div id="edit_user" class="main">
+            Digite o nome ou e-mail do usuário desejado:
+            <input type="text" class="form-control" id="edit_user" name="edit_user" style="display: inline">
+            <button id="register" class="btn btn-primary" onclick="editUser()">
+                Pesquisar
+            </button>
+        </div>
+
+        <div id="edit_user_form" class="main">
+            Observação importante: Deixe em branco os dados que você não deseja editar
+            <br /><br />
+
+            Novo nome:
+            <input type="text" class="form-control" id="name" name="name">
+            <br />
+
+            Novo e-mail:
+            <input type="text" class="form-control" id="email" name="email">
+            <br />
+
+            Nova data de Nascimento (formato DD/MM/AAAA):
+            <input type="text" class="form-control" id="birth_date" name="birth_date" onkeypress="return isInteger(event.which, event.keyCode)">
+            <br />
+
+            Nova foto (clique <a href="https://imgur.com/upload" target="_blank">aqui</a> para fazer o upload da imagem e copie a URL para a caixa abaixo):
+            <input type="text" class="form-control" id="picture" name="email">
+            <br />
+
+            <div id="rbuttons" class="row mt-2">
+                <div class="mx-auto d-block">
+                    <button id="register" class="btn btn-primary" onclick="submitRegisterForm()">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>

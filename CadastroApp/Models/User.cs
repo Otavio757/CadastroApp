@@ -11,21 +11,28 @@ namespace CadastroApp.Models
     public class User
     {
         [Key]
-        public long ID { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public Date BirthDate { get; set; }
+        public string PictureUrl { get; set; }
 
-        public User(string name, string email, Date birthDate)
+        public User(long id, string name, string email, Date birthDate, string pictureUrl)
         {
+            Id = id;
             Name = name;
             Email = email;
             BirthDate = birthDate;
+            PictureUrl = pictureUrl;
         }
 
-        public override string ToString()
+        public User(long idUser, string name, string email, long idDate, string birthDate, string pictureUrl)
         {
-            return "Nome: " + Name + "\nE-mail: " + Email + "\nData de Nascimento: " + BirthDate;
+            Id = idUser;
+            Name = name;
+            Email = email;
+            BirthDate = new Date(idDate, birthDate);
+            PictureUrl = pictureUrl;
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿.main {
+    visibility: initial;
+    margin-top: 15px;
+}
+
+#register {
+    margin-left: 15px;
+}
+
+#form {
+    display: none;
+}
+
+#search_user {
+    display: none;
+}
+
+#list_users {
+    display: none;
+}
+
+#edit_user {
+    display: none;
+}
+
+#edit_user_form {
+    display: none;
+}

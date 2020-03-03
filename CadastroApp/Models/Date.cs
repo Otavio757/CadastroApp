@@ -11,16 +11,27 @@ namespace CadastroApp.Models
     public class Date
     {
         [Key]
-        public int ID { get; set; }
+        public long Id { get; set; }
         public int Day { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
 
-        public Date(int day, int month, int year)
+        public Date(long id, int day, int month, int year)
         {
+            Id = id;
             Day = day;
             Month = month;
             Year = year;
+        }
+
+        public Date(long id, string date)
+        {
+            Id = id;
+
+            string[] dateElements = date.Split('-');
+            Day = int.Parse(dateElements[0]);
+            Month = int.Parse(dateElements[1]);
+            Year = int.Parse(dateElements[2]);
         }
 
         public override string ToString()
